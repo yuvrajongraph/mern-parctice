@@ -1,16 +1,16 @@
 import "./App.css";
 import React from "react";
 import Todo from "./components/Todo/Todo";
-import Login from "./components/Login/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Authentication from "./components/Authentication/Authentication";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Todo />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/todo" element={<Todo />} />
+          <Route path="/" element={<Authentication />} />
         </Routes>
       </BrowserRouter>
     </>
