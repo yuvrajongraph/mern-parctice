@@ -8,6 +8,7 @@ import logoOne from './img/logo1.png'
 import logoTwo from './img/logo2.png'
 import logoThree from './img/logo3.png'
 import logoFour from './img/logo4.png'
+import './mobile.css';
 
 const FoodDelivery = () => {
   const [inputList, setInputList] = useState({
