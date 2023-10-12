@@ -1,41 +1,42 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import "./FoodDelivery.css";
-import logo from './img/istockphoto-1407689582-612x612.webp'
-import one from './img/1.png';
-import two from './img/2.png';
-import three from './img/3.png';
-import logoOne from './img/logo1.png'
-import logoTwo from './img/logo2.png'
-import logoThree from './img/logo3.png'
-import logoFour from './img/logo4.png'
-import './mobile.css';
+import logo from "./img/istockphoto-1407689582-612x612.webp";
+import one from "./img/1.png";
+import two from "./img/2.png";
+import three from "./img/3.png";
+import logoOne from "./img/logo1.png";
+import logoTwo from "./img/logo2.png";
+import logoThree from "./img/logo3.png";
+import logoFour from "./img/logo4.png";
+import "./mobile.css";
 
 const FoodDelivery = () => {
   const [inputList, setInputList] = useState({
-    name:"",
-    email:"",
-    phone:"",
-    message:""
-  }); 
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleEvent = (e)=>{
-        
-        const name = e.target.name;
-        const value = e.target.value;
+  const handleEvent = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
 
-        setInputList({...inputList,[name]:value});
-  }
+    setInputList({ ...inputList, [name]: value });
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
       <nav id="navbar">
         <div id="logo">
-          <img
-            src={logo}
-            alt="MyOnlineMeal.com"
-          />
+          <img src={logo} alt="MyOnlineMeal.com" />
         </div>
         <ul>
-          <li className="item">
+          {/* <li className="item">
             <a href="#home">Home</a>
           </li>
           <li className="item">
@@ -46,9 +47,12 @@ const FoodDelivery = () => {
           </li>
           <li className="item">
             <a href="#contact">Contact Us</a>
-          </li>
+          </li> */}
           <li className="item">
             <a href="/todo">Todo</a>
+          </li>
+          <li className="item">
+            <a href="/food">Food</a>
           </li>
           <li className="item">
             <a href="/fitness">Fitness</a>
@@ -57,6 +61,19 @@ const FoodDelivery = () => {
             <a href="/">Login/Signup</a>
           </li>
         </ul>
+        <div className="dropdown">
+          <button className="dropdown-toggle" onClick={toggleDropdown}>
+            Scroll options
+          </button>
+          {isOpen && (
+            <div className="dropdown-content">
+              <a href="#home">Home</a>
+              <a href="#services-container">Services</a>
+              <a href="#client-section">Our Clients</a>
+              <a href="#contact">Contact Us</a>
+            </div>
+          )}
+        </div>
       </nav>
 
       <section id="home">
