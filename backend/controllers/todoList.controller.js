@@ -26,6 +26,19 @@ const getAllItems = (req, res) => {
       });
 }
 
+const getItem = (req, res) => {
+  const params = req.params;
+  Todo.find({_id:params.id})
+    .then((result) => {
+      return res.status(200).json(result);
+    })
+    .catch((err) => {
+      return res.status(500).json({
+        error: "Server Error",
+      });
+    });
+}
+
 const updateItem = async (req, res) => {
     const params = req.params;
     const body = req.body;
@@ -47,4 +60,4 @@ const deleteItem = async (req, res) => {
     });
 }
 
-module.exports = {createItem, getAllItems, updateItem, deleteItem}
+module.exports = {createItem, getAllItems, updateItem, deleteItem, getItem}

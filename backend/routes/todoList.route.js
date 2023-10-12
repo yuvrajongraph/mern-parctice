@@ -6,6 +6,8 @@ router.post("/todo", todoListController.createItem);
 
 router.get("/todo", todoListController.getAllItems);
 
+router.get("/todo/:id", todoListController.getItem);
+
 router.patch("/todo/:id", todoListController.updateItem);
 
 router.delete("/todo/:id", todoListController.deleteItem);

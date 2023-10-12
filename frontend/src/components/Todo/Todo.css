@@ -42,6 +42,7 @@
     width: 60%;
     border-bottom: 2px solid red ;
     outline: none;
+    margin: 10px 0px;
   }
   
   ol{
@@ -87,10 +88,15 @@
   
   button{
     margin-left: 5px;
-    min-height: 40px;
+    min-height: 35px;
     width: 40px;
     color: grey;
     font-size: 30px;
+    border-radius: 9px;
+  }
+
+  #search{
+    font-size: 18px;
   }
   
   .icon{
