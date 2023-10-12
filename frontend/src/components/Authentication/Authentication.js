@@ -1,6 +1,7 @@
 import {React, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./Authentication.css"
+import Navbar from '../Navbar/Navbar';
 
 const Authentication = () => {
   const [email, setEmail] = useState('');
@@ -26,6 +27,7 @@ const Authentication = () => {
       };
       const response = await fetch('http://localhost:1010/signin', options);
       const data = await response.json();
+      //console.log(data);
       if(data.message){
         alert(data.message)
         window.location.href = "/todo";
@@ -56,6 +58,7 @@ const Authentication = () => {
     
   return (
     <>
+      <Navbar />
      <div className="login-signup-container">
       {/* <div className='box'> */}
       <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>

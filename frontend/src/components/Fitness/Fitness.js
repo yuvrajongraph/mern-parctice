@@ -1,6 +1,7 @@
 import {React, useState} from 'react'
 import "./Fitness.css"
 import logo from './img/istockphoto-876895654-612x612.webp'
+import Navbar from '../Navbar/Navbar';
 
 const Fitness = () => {
     const [inputList, setInputList] = useState({
@@ -23,14 +24,15 @@ const Fitness = () => {
         <img src={logo} alt="" />
         <div>fitness</div>
       </div>
-      <div className="mid">
+      {/* <div className="mid">
         <ul className="navbar">
           <li><a href="">Home</a></li>
           <li><a href="">About</a></li>
           <li><a href="">Fitness Calculator</a></li>
           <li><a href="">Contact</a></li>
         </ul>
-      </div>
+      </div> */}
+      <Navbar />
       <div className="right">
         <button className="btn">Call us</button>
         <button className="btn">Email us</button>

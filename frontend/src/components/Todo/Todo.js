@@ -1,5 +1,6 @@
 import {React, useState} from 'react';
 import "./Todo.css";
+import Navbar from '../Navbar/Navbar';
 
 const Todo = () => {
     const [inputList, setInputList] = useState("");
@@ -91,6 +92,8 @@ const Todo = () => {
       setIsEditItem(id);
     };
     return (
+      <>
+      <Navbar />
         <div className="main">
           <div className="container">
             <h1 className="heading-container"> To Do List </h1>
@@ -139,6 +142,7 @@ const Todo = () => {
             </ol>
           </div>
         </div>
+        </>
     );
 }
 

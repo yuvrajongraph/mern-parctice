@@ -71,9 +71,11 @@ body, html {
     border-radius: 10px;
     font-size: 15px;
     cursor: pointer;
+    z-index: 200;
   }
   .btn:hover {
     background-color: rgb(114, 108, 108);
+    z-index: 200;
   }
   .container {
     border: 2px solid white;
