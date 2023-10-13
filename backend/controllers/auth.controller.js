@@ -1,9 +1,18 @@
 const User = require('../models/user.model')
 const bcrypt = require('bcrypt')
+const { validationResult } = require("express-validator");
 const expressjwt = require("express-jwt");
 const jwt = require("jsonwebtoken");
 
 const signUp = async (req, res) => {
+
+  const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({
+        error: errors.array()[0].msg,   
+      });
+    }
+
     const body = req.body;
     const saltRounds = 10;
     const salt = bcrypt.genSaltSync(saltRounds);
@@ -17,7 +26,10 @@ const signUp = async (req, res) => {
     }else{
     const user = new User(body);
     user.save().then((result) => {
-        return res.status(201).json(result);
+        return res.status(201).json({
+          message: "User registration successful",
+          data: result
+        });
       })
       .catch((err) => {
         return res.status(500).json({
@@ -28,6 +40,14 @@ const signUp = async (req, res) => {
 }
 
 const signIn=async(req,res)=>{
+  
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({
+      error: errors.array()[0].msg,
+    });
+  }
+
     const body = req.body;
     const userWithEmail = await User.findOne({email:body.email})
     if(!userWithEmail){
@@ -45,7 +65,8 @@ const signIn=async(req,res)=>{
     res.cookie("token", token, { expire: new Date() + 9999 });
     return res.status(200).json({
         message: "User Login Successful",
-        token:token
+        token:token,
+        data:userWithEmail
     })
 
 }

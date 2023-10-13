@@ -12,14 +12,14 @@
     align-items: center;
     text-align: center;
   }
-  .container{
+  .container-todo{
     border: 2px solid black;
     width: 25%;
-    height: 80vh;
-    background-color: cyan;
+    height: 68vh;
+    background: linear-gradient(45deg, #2980B9, #6DD5FA, #ffffff, #6DD5FA, #2980B9);
     border-radius: 15px;
     box-shadow: 5px 5px 25px -5px rgba(0,0,0,0.5);
-    margin-top: 100px;
+    margin: 40px;
   }
   
   .heading-container{
@@ -42,6 +42,7 @@
     width: 60%;
     border-bottom: 2px solid red ;
     outline: none;
+    margin: 10px 0px;
   }
   
   ol{
@@ -87,10 +88,15 @@
   
   button{
     margin-left: 5px;
-    min-height: 40px;
-    width: 40px;
+    min-height: 35px;
+    width: 80px;
     color: grey;
     font-size: 30px;
+    border-radius: 9px;
+  }
+
+  #search{
+    font-size: 18px;
   }
   
   .icon{
