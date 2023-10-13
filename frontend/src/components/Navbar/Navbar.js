@@ -1,9 +1,13 @@
-import React from 'react'
-import "./Navbar.css"
+import React from "react";
+import "./Navbar.css";
+import { user } from "../../contexts/Auth/AuthProvider";
 const Navbar = () => {
+  const userLogOut = ()=>{
+    localStorage.clear();
+  }
   return (
     <>
-       <nav id="navbar-root">
+      <nav id="navbar-root">
         <ul>
           <li className="item">
             <a href="/todo">Todo</a>
@@ -14,14 +18,19 @@ const Navbar = () => {
           <li className="item">
             <a href="/fitness">Fitness</a>
           </li>
-          <li className="item">
-            <a href="/">Login/Signup</a>
-          </li>
+          {user ? (
+            <li className="item">
+              <a href="/" onClick={userLogOut}>Logout</a>
+            </li>
+          ) : (
+            <li className="item">
+              <a href="/">Login/Signup</a>
+            </li>
+          )}
         </ul>
       </nav>
-
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

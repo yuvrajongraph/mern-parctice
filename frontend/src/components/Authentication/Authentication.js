@@ -2,12 +2,14 @@ import {React, useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./Authentication.css"
 import Navbar from '../Navbar/Navbar';
+import { useAuth } from '../../contexts/Auth/AuthProvider';
 
 const Authentication = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(false);
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
+  const { userData, setUserData} = useAuth();
   
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -27,7 +29,7 @@ const Authentication = () => {
       };
       const response = await fetch('http://localhost:1010/signin', options);
       const data = await response.json();
-      //console.log(data);
+      localStorage.setItem('user', JSON.stringify(data));
       if(data.message){
         alert(data.message)
         window.location.href = "/todo";
@@ -35,6 +37,7 @@ const Authentication = () => {
         alert(data.error)
       }
     };
+    
     const handleSignUp = async()=>{
       const user = {
         email: email,

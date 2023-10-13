@@ -9,6 +9,7 @@ import logoTwo from "./img/logo2.png";
 import logoThree from "./img/logo3.png";
 import logoFour from "./img/logo4.png";
 import "./mobile.css";
+import {user} from '../../contexts/Auth/AuthProvider'
 
 const FoodDelivery = () => {
   const [inputList, setInputList] = useState({
@@ -29,6 +30,10 @@ const FoodDelivery = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const userLogOut = ()=>{
+    localStorage.clear();
+  }
   return (
     <>
       <nav id="navbar">
@@ -57,9 +62,15 @@ const FoodDelivery = () => {
           <li className="item">
             <a href="/fitness">Fitness</a>
           </li>
-          <li className="item">
-            <a href="/">Login/Signup</a>
-          </li>
+          {user ? (
+            <li className="item">
+              <a href="/" onClick={userLogOut}>Logout</a>
+            </li>
+          ) : (
+            <li className="item">
+              <a href="/">Login/Signup</a>
+            </li>
+          )}
         </ul>
         <div className="dropdown">
           <button className="dropdown-toggle" onClick={toggleDropdown}>

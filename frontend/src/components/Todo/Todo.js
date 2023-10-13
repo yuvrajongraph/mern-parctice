@@ -1,16 +1,30 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import "./Todo.css";
 import Navbar from "../Navbar/Navbar";
+import { useAuth } from "../../contexts/Auth/AuthProvider";
 
 const Todo = () => {
-  const savedData = JSON.parse(localStorage.getItem("key"));
+  
+  const todo = sessionStorage.getItem("key");
+  const savedData = todo != null ? JSON.parse(todo) : null;
   const [inputList, setInputList] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [items, setItems] = useState(savedData);
   const [itemsManipulate, setItemsManipulate] = useState(savedData);
   const [toggleIcon, setToggleIcon] = useState(true);
   const [isEditItem, setIsEditItem] = useState(null);
-  localStorage.setItem("key", JSON.stringify(items));
+
+  useEffect(() => {
+    if (savedData == null) {
+      setItems([]);
+      setItemsManipulate([]);
+    } else {
+      setItems(savedData);
+      setItemsManipulate(savedData);
+    }
+  },[]);
+
+  sessionStorage.setItem("key", JSON.stringify(items));
 
   const handleEvent = (e) => {
     setSearchInput(e.target.value);
@@ -24,8 +38,8 @@ const Todo = () => {
     if (searchInput === "") {
       setItems(itemsManipulate);
     } else {
-      const item = items.find((val) => {
-        return val.text === searchInput;
+      const item = itemsManipulate.find((val) => {
+        return val.text.toLowerCase() === searchInput.toLowerCase();
       });
       if (item) {
         const options = {
@@ -77,6 +91,14 @@ const Todo = () => {
             return val;
           })
         );
+        setItemsManipulate(
+          items.map((val) => {
+            if (val._id === isEditItem) {
+              return { ...val, text: inputList };
+            }
+            return val;
+          })
+        );
         setToggleIcon(true);
         setInputList("");
         setIsEditItem(null);
@@ -115,6 +137,11 @@ const Todo = () => {
       method: "DELETE",
     });
     setItems((oldItems) => {
+      return oldItems.filter((val) => {
+        return val._id !== id;
+      });
+    });
+    setItemsManipulate((oldItems) => {
       return oldItems.filter((val) => {
         return val._id !== id;
       });
