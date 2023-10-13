@@ -194,6 +194,7 @@ const FoodDelivery = () => {
                 rows="10"
               ></textarea>
             </div>
+            <button className="btn" id="submit-query">Submit</button>
           </form>
         </div>
       </section>

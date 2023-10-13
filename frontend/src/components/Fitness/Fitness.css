@@ -1,14 +1,16 @@
-body, html {
+
+.main-div::before{
+  content: '';
+  background: url("./img/man-2604149_640.jpg") no-repeat center center/cover;
+  position: fixed;
+  width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
-  top: 0px;
-  left: 0px;
+  z-index: -100;
 }
+
 .main-div{
     margin: 0px;
     padding: 0px;
-    background: url("./img/man-2604149_640.jpg") no-repeat center center/cover;
 }
 .header{
   padding: 1px;
@@ -87,7 +89,7 @@ body, html {
     padding: 75px 75px;
     width: 25%;
     border-radius: 28px;
-    background: linear-gradient(45deg, #2980B9, #6DD5FA, #ffffff, #6DD5FA, #2980B9) ;
+    background: linear-gradient(135deg, #000000 0%, #333333 50%, #000000 100%);
   }
   .container h1 {
     color: red;
@@ -98,6 +100,7 @@ body, html {
     display: block;
     width: 85%;
     padding: 6px;
+    color: white;
     border: 2px solid black;
     margin: 11px auto;
     border-radius: 23px;

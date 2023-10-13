@@ -268,6 +268,10 @@ footer{
    transform: scale(1.1);
 }
 
+#submit-query{
+   margin: 10px 0px;
+}
+
 .center{
     text-align: center;
 }

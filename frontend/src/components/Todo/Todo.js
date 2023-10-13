@@ -161,7 +161,7 @@ const Todo = () => {
     <>
       <Navbar />
       <div className="main">
-        <div className="container">
+        <div className="container-todo">
           <h1 className="heading-container"> To Do List </h1>
           <input
             type="text"
